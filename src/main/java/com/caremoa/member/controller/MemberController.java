@@ -216,6 +216,7 @@ public class MemberController {
 	 * @throws Exception 
 	 * @throws ApiException 
 	*/
+	@Operation(summary = "로그인" , description = "인증 로그인" )
 	@GetMapping("/login")
 	public LoginDto findUserId(@RequestParam("userId") String userId) throws ApiException, Exception {
 		return service.findUserId(userId);

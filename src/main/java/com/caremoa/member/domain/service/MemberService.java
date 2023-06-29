@@ -1,10 +1,10 @@
 package com.caremoa.member.domain.service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -200,7 +200,7 @@ public class MemberService {
 		}
 		
 		log.info(data.get().toString());
-		String roleList = roleRepository.findByMemberId(data.get().getId()).stream()
+		String roleList = roleRepository.findByMemberId(data.get().getId(), PageRequest.of(0, 10)).stream()
 				.map(list -> list.getRole().toString()).collect(Collectors.joining(","));
 
 		return LoginDto.builder().userId(userId).name(data.get().getName()).password(data.get().getPassword())

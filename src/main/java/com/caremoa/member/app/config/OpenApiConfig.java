@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
@@ -28,6 +30,7 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 */
 @Configuration
 @ConditionalOnProperty(name = "springdoc.swagger-ui.enabled", havingValue = "true", matchIfMissing = true)
+@OpenAPIDefinition(servers = {@Server(url = "${server.servlet.context-path}", description = "Default Server URL")})
 public class OpenApiConfig {
 	// https://codingnconcepts.com/spring-boot/configure-springdoc-openapi/
 	private static final String BEARER_FORMAT = "JWT";
@@ -92,7 +95,7 @@ public class OpenApiConfig {
     */
     @Bean
     GroupedOpenApi apiNoVersion() {
-		return GroupedOpenApi.builder().group("controller").pathsToExclude("/api/**")
+		return GroupedOpenApi.builder().group("Controller").pathsToExclude("/api/**")
 				.packagesToScan("com.caremoa.member.controller").build();
 	}
 
@@ -104,7 +107,7 @@ public class OpenApiConfig {
     */
     @Bean
     GroupedOpenApi apiRest() {
-		return GroupedOpenApi.builder().group("RestApi").pathsToMatch("/api/**").build();
+		return GroupedOpenApi.builder().group("restApi").pathsToMatch("/api/**").build();
 	}
 
 	/**

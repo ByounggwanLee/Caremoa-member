@@ -275,7 +275,7 @@ spring:
       #classpath*:db/${database}/data.sql
 
   datasource:
-    url: jdbc:mysql://13.125.214.14:3306/caremoa_member?serverTimezone=Asia/Seoul 
+    url: jdbc:mysql://3.39.223.154:3306/caremoa_member?serverTimezone=Asia/Seoul 
     username: user1
     password: user1
     hikari:   # SpringBoot2.x 는 디폴트로 HikariCP(성능좋음)
@@ -376,7 +376,7 @@ logging:
         #  brokers: localhost:9091,localhost:9092,localhost:9093
         #  zkNodes: localhost:2181,localhost:2182,localhost:2183
         binder:
-          brokers: localhost:9092
+          brokers: 3.39.223.154:9092
 #        bindings:
 #          basicConsumer-in-0:
 #            consumer:
