@@ -378,7 +378,7 @@ logging:
         binder:
           brokers: 3.39.223.154:9092
 #        bindings:
-#          basicConsumer-in-0:
+#          basicConsumer-in-0:ㅡ무 
 #            consumer:
 #              resetOffsets: true
 #              start-offset: earliest
