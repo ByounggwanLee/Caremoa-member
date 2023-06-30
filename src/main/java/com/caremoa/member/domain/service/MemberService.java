@@ -198,12 +198,12 @@ public class MemberService {
 			log.info("not exist");
 			return null;
 		}
-		
+
 		log.info(data.get().toString());
 		String roleList = roleRepository.findByMemberId(data.get().getId(), PageRequest.of(0, 10)).stream()
 				.map(list -> list.getRole().toString()).collect(Collectors.joining(","));
 
-		return LoginDto.builder().userId(userId).name(data.get().getName()).password(data.get().getPassword())
-				.role(roleList).build();
+		return LoginDto.builder().id(data.get().getId()).userId(userId).name(data.get().getName())
+				.password(data.get().getPassword()).role(roleList).build();
 	}
 }

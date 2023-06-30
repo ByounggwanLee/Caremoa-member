@@ -67,7 +67,7 @@ public class PolicyHandler {
 
 		return mapData -> {
 			ObjectMapper mapper = new ObjectMapper();
-			log.debug(mapData.toString());
+			log.debug("Kafka subscript : {}", mapData.toString());
 			
 			switch (mapData.get("eventType").toString()) {
 

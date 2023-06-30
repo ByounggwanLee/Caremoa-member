@@ -152,6 +152,36 @@ spring:
       path: /h2-console
 
 #-------------------------------------------------------------
+# Kafka 설정
+#-------------------------------------------------------------
+  cloud:
+    function:
+      #definition: wheneverContractCompletedThenReflectionScore;wheneverClaimCompletedThenReflectionScore;whenevereReviewMemberEvaluatedThenReflectionScore;
+      definition: basicConsumer;
+      
+    stream:
+      kafka:
+        #binder:
+        #  brokers: localhost:9091,localhost:9092,localhost:9093
+        #  zkNodes: localhost:2181,localhost:2182,localhost:2183
+        binder:
+          brokers: localhost:9092
+      bindings:
+        basicConsumer-in-0:
+          group: contract
+          destination: caremoa-topic
+          content-type: application/json          
+        
+        basicProducer-out-0:
+          destination: caremoa-topic
+          content-type: application/json
+        
+       # basicConsumer-in-0:
+       #   group: member
+       #   destination: caremoa-topic
+       #   content-type: application/json
+ 
+#-------------------------------------------------------------
 # 서버 포트 설정
 #-------------------------------------------------------------
 server:
@@ -186,56 +216,7 @@ logging:
       max-history: 30
   pattern:
     dateformat: yyyy-MM-dd HH:mm:ss.SSS,Asia/Seoul
-
-#-------------------------------------------------------------
-# Kafka 설정
-#-------------------------------------------------------------
-  cloud:
-    function:
-      #definition: wheneverContractCompletedThenReflectionScore;wheneverClaimCompletedThenReflectionScore;whenevereReviewMemberEvaluatedThenReflectionScore;
-      definition: basicConsumer;
       
-    stream:
-      kafka:
-        #binder:
-        #  brokers: localhost:9091,localhost:9092,localhost:9093
-        #  zkNodes: localhost:2181,localhost:2182,localhost:2183
-        binder:
-          brokers: localhost:9092
-#        bindings:
-#          basicConsumer-in-0:
-#            consumer:
-#              resetOffsets: true
-#              start-offset: earliest
-      bindings:
-        basicConsumer-in-0:
-          group: contract
-          destination: caremoa-topic
-          content-type: application/json        
-       # wheneverContractCompletedThenReflectionScore-in-0:
-       #   group: contract
-       #   destination: caremoa-topic
-       #   content-type: application/json        
-       # 
-       # wheneverClaimCompletedThenReflectionScore-in-0:
-       #   group: claim
-       #   destination: caremoa-topic
-       #   content-type: application/json        
-       # 
-       # whenevereReviewMemberEvaluatedThenReflectionScore-in-0:
-       #   group: review
-       #   destination: caremoa-topic
-       #   content-type: application/json        
-        
-        basicProducer-out-0:
-          destination: caremoa-topic
-          content-type: application/json
-        
-       # basicConsumer-in-0:
-       #   group: member
-       #   destination: caremoa-topic
-       #   content-type: application/json
-       
 #-------------------------------------------------------------
 # 사용자 정의 설정
 #-------------------------------------------------------------        
@@ -327,6 +308,28 @@ spring:
       path: /h2-console
 
 #-------------------------------------------------------------
+# Kafka 설정 
+#-------------------------------------------------------------
+  cloud:
+    function:
+      definition: basicConsumer;
+      
+    stream:
+      kafka:
+        binder:
+          brokers: 3.39.223.154:9092
+
+      bindings:
+        basicConsumer-in-0:
+          group: contract
+          destination: caremoa-topic
+          content-type: application/json        
+       
+        basicProducer-out-0:
+          destination: caremoa-topic
+          content-type: application/json
+               
+#-------------------------------------------------------------
 # 서버 포트 설정
 #-------------------------------------------------------------
 server:
@@ -362,55 +365,6 @@ logging:
   pattern:
     dateformat: yyyy-MM-dd HH:mm:ss.SSS,Asia/Seoul
 
-#-------------------------------------------------------------
-# Kafka 설정 
-#-------------------------------------------------------------
-  cloud:
-    function:
-      #definition: wheneverContractCompletedThenReflectionScore;wheneverClaimCompletedThenReflectionScore;whenevereReviewMemberEvaluatedThenReflectionScore;
-      definition: basicConsumer;
-      
-    stream:
-      kafka:
-        #binder:
-        #  brokers: localhost:9091,localhost:9092,localhost:9093
-        #  zkNodes: localhost:2181,localhost:2182,localhost:2183
-        binder:
-          brokers: 3.39.223.154:9092
-#        bindings:
-#          basicConsumer-in-0:ㅡ무 
-#            consumer:
-#              resetOffsets: true
-#              start-offset: earliest
-      bindings:
-        basicConsumer-in-0:
-          group: contract
-          destination: caremoa-topic
-          content-type: application/json        
-       # wheneverContractCompletedThenReflectionScore-in-0:
-       #   group: contract
-       #   destination: caremoa-topic
-       #   content-type: application/json        
-       # 
-       # wheneverClaimCompletedThenReflectionScore-in-0:
-       #   group: claim
-       #   destination: caremoa-topic
-       #   content-type: application/json        
-       # 
-       # whenevereReviewMemberEvaluatedThenReflectionScore-in-0:
-       #   group: review
-       #   destination: caremoa-topic
-       #   content-type: application/json        
-        
-        basicProducer-out-0:
-          destination: caremoa-topic
-          content-type: application/json
-        
-       # basicConsumer-in-0:
-       #   group: member
-       #   destination: caremoa-topic
-       #   content-type: application/json
-       
 #-------------------------------------------------------------
 # 사용자 정의 설정
 #-------------------------------------------------------------        
