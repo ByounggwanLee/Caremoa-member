@@ -350,7 +350,7 @@ server:
 #-------------------------------------------------------------
 # log File 설정
 #-------------------------------------------------------------
-logging:
+logging: 
   level:
     root: error # trace, debug, info, warn, error, fatal
     "[org.springframework]": info
