@@ -317,7 +317,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: 3.39.223.154:9092
+          brokers: ec2-3-39-223-154.ap-northeast-2.compute.amazonaws.com:9092
 
       bindings:
         basicConsumer-in-0:
