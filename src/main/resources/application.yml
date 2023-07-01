@@ -165,11 +165,11 @@ spring:
         #  brokers: localhost:9091,localhost:9092,localhost:9093
         #  zkNodes: localhost:2181,localhost:2182,localhost:2183
         binder:
-          brokers: localhost:9092
-          #brokers: ec2-3-39-223-154.ap-northeast-2.compute.amazonaws.com:9092
+          # brokers: localhost:9092
+          brokers: ec2-3-39-223-154.ap-northeast-2.compute.amazonaws.com:9092
       bindings:
         basicConsumer-in-0:
-          group: contract
+          group: member
           destination: caremoa-topic
           content-type: application/json          
         
@@ -326,7 +326,7 @@ spring:
           brokers: ec2-3-39-223-154.ap-northeast-2.compute.amazonaws.com:9092
       bindings:
         basicConsumer-in-0:
-          group: contract
+          group: member
           destination: caremoa-topic
           content-type: application/json          
         
