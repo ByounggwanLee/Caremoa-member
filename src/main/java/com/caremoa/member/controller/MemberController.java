@@ -204,7 +204,7 @@ public class MemberController {
 			}
 			log.info("Kafka publish : {}", json);
 
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			log.info("publish {}", e.getMessage());
 			return ResponseEntity.internalServerError().body(null);
