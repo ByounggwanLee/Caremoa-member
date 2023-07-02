@@ -160,7 +160,7 @@ public class MemberController {
 	@PatchMapping("/members/{id}")
 	ResponseEntity<MemberDto> patchData(@RequestBody MemberDto newData, @PathVariable("id") Long id) {
 		try {
-			return new ResponseEntity<>(MemberDto.toDto(service.putData(newData.toModel(), id)), HttpStatus.OK);
+			return new ResponseEntity<>(MemberDto.toDto(service.patchData(newData.toModel(), id)), HttpStatus.OK);
 		} catch (ApiException apiEx) {
 			return new ResponseEntity<>(null, apiEx.getCode());
 		} catch (Exception e) {

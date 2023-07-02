@@ -3,6 +3,11 @@ package com.caremoa.member.adapter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.cloud.stream.function.StreamBridge;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.util.MimeTypeUtils;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -23,6 +28,7 @@ import lombok.Data;
 public class AbstractEvent {
 	private String eventType;
 	private String timestamp;
+	private StreamBridge streamBridge;
 
     public AbstractEvent(){
     	// 정의한 클래스명이 들어감
@@ -31,6 +37,15 @@ public class AbstractEvent {
         this.timestamp = defaultSimpleDateFormat.format(new Date());
     }
 
+    public AbstractEvent(StreamBridge streamBridge){
+    	// 정의한 클래스명이 들어감
+        this.setEventType(this.getClass().getSimpleName());
+        SimpleDateFormat defaultSimpleDateFormat = new SimpleDateFormat("YYYYMMddHHmmss");
+        this.timestamp = defaultSimpleDateFormat.format(new Date());
+        
+    	this.streamBridge = streamBridge;
+    }
+    
     public String toJson(){
         ObjectMapper objectMapper = new ObjectMapper();
         String json = null;
